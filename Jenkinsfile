@@ -1,8 +1,7 @@
 pipeline {
     agent any
-
     stages {
-        stage('Build') {
+        stage("Build") {
             steps {
                 echo "Fetch the source code from the directory path"
                 echo "Compile the code and generate any necessary artifacts"
@@ -15,14 +14,14 @@ pipeline {
                 }    
             }
         
-        stage('Test') {
+        stage("Test") {
             steps {
                 echo "Unit tests"
                 echo "Integration tests"
                 }
             }
         
-        stage('Deploy') {
+        stage("Deploy") {
             steps {
                 echo "Deploy the application to a testing environment"
                 }
