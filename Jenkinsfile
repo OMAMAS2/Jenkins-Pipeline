@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo "Fetch the source code from the directory path specified by the environment variable: ${env.DIRECTORY_PATH}"
+                echo "Fetch the source code from the directory path"
                 echo "Compile the code and generate any necessary artifacts"
                 }
             post{
@@ -24,7 +24,7 @@ pipeline {
         
         stage('Deploy') {
             steps {
-                echo "Deploy the application to a testing environment specified by the environment variable: ${env.TESTING_ENVIRONMENT}"
+                echo "Deploy the application to a testing environment"
                 }
             }
         }
