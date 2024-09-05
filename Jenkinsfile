@@ -21,5 +21,25 @@ pipeline {
                 }
             }
         }
+
+        stage('Code Analysis") {
+            steps {
+                echo "Analysing code with SonarQube"
+            }
+        }
+        
+        stage('Security Scan') {
+            steps {
+                echo "Performing Security Scan using OWASP ZAP"
+            }
+            post{
+                success{
+                    mail to: "omamashakhli2@gmail.com",
+                    subject: "Security Scan Email",
+                    body: "Security Scan was Successful!"
+                }
+            }
+        }
     }
 }
+
