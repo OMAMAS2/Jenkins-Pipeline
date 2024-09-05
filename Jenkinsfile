@@ -40,6 +40,24 @@ pipeline {
                 }
             }
         }
+        
+        stage('Deploy to Staging') {
+            steps {
+                echo "Deploying to Staging Environment AWS EC2 instance"
+            }
+        }
+        
+        stage('Integration Tests on Staging') {
+            steps {
+                echo "Running Integration tests on staging ..."
+            }
+        }
+
+        stage('Deploy to Production') {
+            steps {
+                echo "Deploying to Staging Environment AWS EC2 instance"
+            }
+        }
     }
 }
 
