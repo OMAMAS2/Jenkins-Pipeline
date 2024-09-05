@@ -10,7 +10,7 @@ pipeline {
         
         stage('Unit and Integration Tests') {
             steps {
-                echo "Unit tests with JUnit"
+                echo "Unit tests with JUnit5"
                 echo "Integration tests with Selenium"
             }
             post{
@@ -24,13 +24,13 @@ pipeline {
 
         stage('Code Analysis') {
             steps {
-                echo "Analysing code with SonarQube"
+                echo "Analysing code with Jenkins"
             }
         }
         
         stage('Security Scan') {
             steps {
-                echo "Performing Security Scan using OWASP ZAP"
+                echo "Performing Security Scan using Burp Suite"
             }
             post{
                 success{
@@ -49,7 +49,7 @@ pipeline {
         
         stage('Integration Tests on Staging') {
             steps {
-                echo "Running Integration tests on staging ..."
+                echo "Running Integration tests on staging Jenkins"
             }
         }
 
