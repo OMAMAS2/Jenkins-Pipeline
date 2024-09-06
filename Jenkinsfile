@@ -24,13 +24,13 @@ pipeline {
 
         stage('Code Analysis') {
             steps {
-                echo "Analysing code with Jenkins"
+                echo "Analysing code with SonarQube"
             }
         }
         
         stage('Security Scan') {
             steps {
-                echo "Performing Security Scan using Burp Suite"
+                echo "Performing Security Scan using OWASP ZAP"
             }
             post{
                 success{
@@ -49,7 +49,7 @@ pipeline {
         
         stage('Integration Tests on Staging') {
             steps {
-                echo "Running Integration tests on staging Jenkins"
+                echo "Running Integration tests on staging environment"
             }
         }
 
