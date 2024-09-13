@@ -80,24 +80,24 @@ pipeline {
                 echo "Deploying to Staging Environment AWS EC2 instance"
             }
         }
-                    post{
-                success{
-                    emailext(
-                        to: "omamashakhli2@gmail.com",
-                        subject: "Pipeline Successful",
-                        body: "Pipeline was Successful!",
-                        attachLog: true
-                        )
-                }
-               failure{
-                   emailext(
-                        to: "omamashakhli2@gmail.com",
-                        subject: "Pipeline Failed",
-                        body: "Pipeline has Failed!",
-                        attachLog: true
-                       )
-                }
-         }
+    }
+    post{
+        success{
+            emailext(
+                to: "omamashakhli2@gmail.com",
+                subject: "Pipeline Successful",
+                body: "Pipeline was Successful!",
+                attachLog: true
+                )
+            }
+            failure{
+                emailext(
+                    to: "omamashakhli2@gmail.com",
+                    subject: "Pipeline Failed",
+                    body: "Pipeline has Failed!",
+                    attachLog: true
+                    )
+            }
     }
 }
 
