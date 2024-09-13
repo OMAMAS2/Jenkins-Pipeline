@@ -80,5 +80,6 @@ pipeline {
                 echo "Deploying to Staging Environment AWS EC2 instance"
             }
         }
+    }
 }
 
