@@ -46,17 +46,17 @@ pipeline {
             post{
                 success{
                     emailext(
-                        to: "omamashakhli2@gmail.com",
-                        subject: "Security Scan Successful",
-                        body: "Security Scan was Successful!",
+                        to: omamashakhli2@gmail.com,
+                        subject: Security Scan Successful,
+                        body: Security Scan was Successful!,
                         attachLog: true
                         )
                 }
                failure{
                    emailext(
-                        to: "omamashakhli2@gmail.com",
-                        subject: "Secuirty Scan Failed",
-                        body: "Secuirty Scan has Failed!",
+                        to: omamashakhli2@gmail.com,
+                        subject: Secuirty Scan Failed,
+                        body: Secuirty Scan has Failed!,
                         attachLog: true
                        )
                 }
@@ -84,17 +84,17 @@ pipeline {
     post{
         success{
             emailext(
-                to: "omamashakhli2@gmail.com",
-                subject: "Pipeline Successful",
-                body: "Pipeline was Successful!",
+                to: omamashakhli2@gmail.com,
+                subject: Pipeline Successful,
+                body: Pipeline was Successful!,
                 attachLog: true
                 )
             }
             failure{
                 emailext(
-                    to: "omamashakhli2@gmail.com",
-                    subject: "Pipeline Failed",
-                    body: "Pipeline has Failed!",
+                    to: omamashakhli2@gmail.com,
+                    subject: Pipeline Failed,
+                    body: Pipeline has Failed!,
                     attachLog: true
                     )
             }
