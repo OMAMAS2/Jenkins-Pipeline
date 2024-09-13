@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 script{
-                    echo "Building the code with Maven"
+                    echo 'Building the code with Maven'
                 }
             }
         }
@@ -13,8 +13,8 @@ pipeline {
         stage('Unit and Integration Tests') {
             steps {
                 script{
-                echo "Unit tests with JUnit5"
-                echo "Integration tests with Selenium"
+                echo 'Unit tests with JUnit5'
+                echo 'Integration tests with Selenium'
                 }
             }
             post{
