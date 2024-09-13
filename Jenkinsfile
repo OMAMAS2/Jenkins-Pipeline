@@ -1,103 +1,110 @@
 pipeline {
     agent any
-
     stages {
         stage('Build') {
             steps {
+                script {
                     echo 'Building the code with Maven'
+                }
             }
         }
-
         stage('Unit and Integration Tests') {
             steps {
-                echo 'Unit tests with JUnit5'
-                echo 'Integration tests with Selenium'
+                script {
+                    echo 'Unit tests with JUnit5'
+                    echo 'Integration tests with Selenium'
+                }
             }
-            post{
-                success{
+            post {
+                success {
                     emailext(
                         subject: 'Unit and Integration Tests Successful',
-                        body: 'Unit and Integration Tests were Successful!',
+                        body: 'Unit and integration tests have been successful.',
                         to: 'omamashakhli2@gmail.com',
                         attachLog: true
-                        )
+                    )
                 }
-               failure{
-                   emailext(
-                        subject: 'Unit and Integration Tests Failed',
-                        body: 'Unit and Integration Tests have Failed!',
+                failure {
+                    emailext(
+                        subject: 'Unit and Integration Tests Failure',
+                        body: 'Unit and integration tests have failed.',
                         to: 'omamashakhli2@gmail.com',
                         attachLog: true
-                       )
+                    )
                 }
             }
         }
-
         stage('Code Analysis') {
             steps {
-                echo "Analysing code with SonarQube"
+                script {
+                    echo 'Analysing code with SonarQube'
+                }
             }
         }
-        
         stage('Security Scan') {
             steps {
-                echo "Performing Security Scan using OWASP ZAP"
-            }
-            post{
-                success{
-                    emailext(
-                        to: omamashakhli2@gmail.com,
-                        subject: Security Scan Successful,
-                        body: Security Scan was Successful!,
-                        attachLog: true
-                        )
+                script {
+                    echo 'Security Scan using OWASP ZAP'
                 }
-               failure{
-                   emailext(
-                        to: omamashakhli2@gmail.com,
-                        subject: Secuirty Scan Failed,
-                        body: Secuirty Scan has Failed!,
+            }
+            post {
+                success {
+                    emailext(
+                        subject: 'Security Scan Successful',
+                        body: 'Security scan has been successful.',
+                        to: 'omamashakhli2@gmail.com',
                         attachLog: true
-                       )
+                    )
+                }
+                failure {
+                    emailext(
+                        subject: 'Security Scan Failure',
+                        body: 'Security scan has failed.',
+                        to: 'omamashakhli2@gmail.com',
+                        attachLog: true
+                    )
                 }
             }
         }
-        
         stage('Deploy to Staging') {
             steps {
-                echo "Deploying to Staging Environment AWS EC2 instance"
+                script {
+                    echo 'Deploying to Staging Environment AWS EC2 instance'
+                }
             }
         }
-        
         stage('Integration Tests on Staging') {
             steps {
-                echo "Running Integration tests on staging environment"
+                script {
+                    echo 'Running Integration tests on staging environment'
+                }
             }
         }
-
         stage('Deploy to Production') {
             steps {
-                echo "Deploying to Staging Environment AWS EC2 instance"
+                script {
+                    echo 'Deploying to Staging Environment AWS EC2 instance'
+                }
             }
         }
     }
-    post{
-        success{
+    post {
+        success {
             emailext(
-                to: omamashakhli2@gmail.com,
-                subject: Pipeline Successful,
-                body: Pipeline was Successful!,
+                subject: 'Pipeline Success',
+                body: 'Pipeline has been successful.',
+                to: 'omamashakhli2@gmail.com',
                 attachLog: true
-                )
-            }
-            failure{
-                emailext(
-                    to: omamashakhli2@gmail.com,
-                    subject: Pipeline Failed,
-                    body: Pipeline has Failed!,
-                    attachLog: true
-                    )
-            }
+            )
+        }
+        failure {
+            emailext(
+                subject: 'Pipeline Failure',
+                body: 'Pipeline has failed.',
+                to: 'omamashakhli2@gmail.com',
+                attachLog: true
+            )
+        }
     }
 }
 
