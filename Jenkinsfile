@@ -1,38 +1,38 @@
 pipeline {
     agent any
-        stages {
-            stage('Build') {
-                steps {
-                    echo "Building the code with Maven"
-                }
-            }
-    
-            stage('Unit and Integration Tests') {
-                steps {
-                    echo "Unit tests with JUnit5"
-                    echo "Integration tests with Selenium"
-                }
-                post{
-                    success{
-                        attachLog: true,
-                        to: 'omamashakhli2@gmail.com',
-                        subject: "Unit and Integration Tests Email",
-                        body: "Unit and Integration Tests were Successful!"
-                    }
-                }
-            }
-        stage('Code Analysis') {
+    stages {
+        stage('Build') {
             steps {
-                script {
-                    echo 'Analysing code with SonarQube'
+                echo "Building the code with Maven"
+            }
+        }
+    
+        stage('Unit and Integration Tests') {
+            steps {
+                echo "Unit tests with JUnit5"
+                echo "Integration tests with Selenium"
+            }
+            post {
+                success {
+                    emailext(
+                        subject: "Unit and Integration Tests Email",
+                        body: "Unit and Integration Tests were Successful!",
+                        to: 'omamashakhli2@gmail.com',
+                        attachLog: true
+                    )
                 }
             }
         }
+        
+        stage('Code Analysis') {
+            steps {
+                echo 'Analysing code with SonarQube'
+            }
+        }
+        
         stage('Security Scan') {
             steps {
-                script {
-                    echo 'Security Scan using OWASP ZAP'
-                }
+                echo 'Security Scan using OWASP ZAP'
             }
             post {
                 success {
@@ -53,25 +53,22 @@ pipeline {
                 }
             }
         }
+        
         stage('Deploy to Staging') {
             steps {
-                script {
-                    echo 'Deploying to Staging Environment AWS EC2 instance'
-                }
+                echo 'Deploying to Staging Environment AWS EC2 instance'
             }
         }
+        
         stage('Integration Tests on Staging') {
             steps {
-                script {
-                    echo 'Running Integration tests on staging environment'
-                }
+                echo 'Running Integration tests on staging environment'
             }
         }
+        
         stage('Deploy to Production') {
             steps {
-                script {
-                    echo 'Deploying to Staging Environment AWS EC2 instance'
-                }
+                echo 'Deploying to Production Environment AWS EC2 instance'
             }
         }
     }
@@ -94,4 +91,5 @@ pipeline {
         }
     }
 }
+
 
