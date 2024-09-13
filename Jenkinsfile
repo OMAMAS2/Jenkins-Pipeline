@@ -20,7 +20,7 @@ pipeline {
                     emailext(
                         subject: 'Unit and Integration Tests Successful',
                         body: 'Unit and integration tests have been successful.',
-                        to: 'omamashakhli2@gmail.com',
+                        to: 'oshakhli@deakin.edu.au',
                         attachLog: true
                     )
                 }
@@ -28,7 +28,7 @@ pipeline {
                     emailext(
                         subject: 'Unit and Integration Tests Failure',
                         body: 'Unit and integration tests have failed.',
-                        to: 'omamashakhli2@gmail.com',
+                        to: 'oshakhli@deakin.edu.au',
                         attachLog: true
                     )
                 }
