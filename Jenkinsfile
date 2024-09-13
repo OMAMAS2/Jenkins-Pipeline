@@ -22,7 +22,7 @@ pipeline {
                         attachLog: true
                         )
                 }
-               faliure{
+               failure{
                    emailext(
                         to: "omamashakhli2@gmail.com",
                         subject: "Unit and Integration Tests Failed",
@@ -52,7 +52,7 @@ pipeline {
                         attachLog: true
                         )
                 }
-               faliure{
+               failure{
                    emailext(
                         to: "omamashakhli2@gmail.com",
                         subject: "Secuirty Scan Failed",
