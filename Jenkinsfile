@@ -4,29 +4,33 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo "Building the code with Maven"
+                script{
+                    echo "Building the code with Maven"
+                    ]
             }
         }
         
         stage('Unit and Integration Tests') {
             steps {
+                script{
                 echo "Unit tests with JUnit5"
                 echo "Integration tests with Selenium"
+                }
             }
             post{
                 success{
                     emailext(
-                        to: "omamashakhli2@gmail.com",
-                        subject: "Unit and Integration Tests Successful",
-                        body: "Unit and Integration Tests were Successful!",
+                        to: 'omamashakhli2@gmail.com',
+                        subject: 'Unit and Integration Tests Successful',
+                        body: 'Unit and Integration Tests were Successful!',
                         attachLog: true
                         )
                 }
                failure{
                    emailext(
-                        to: "omamashakhli2@gmail.com",
-                        subject: "Unit and Integration Tests Failed",
-                        body: "Unit and Integration Tests have Failed!",
+                        to: 'omamashakhli2@gmail.com',
+                        subject: 'Unit and Integration Tests Failed',
+                        body: 'Unit and Integration Tests have Failed!',
                         attachLog: true
                        )
                 }
