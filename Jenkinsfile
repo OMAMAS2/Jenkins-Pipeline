@@ -1,35 +1,25 @@
 pipeline {
     agent any
-    stages {
-        stage('Build') {
-            steps {
-                script {
-                    echo 'Building the code with Maven'
+        stages {
+            stage('Build') {
+                steps {
+                    echo "Building the code with Maven"
                 }
             }
-        }
-        stage('Unit and Integration Tests') {
-            steps {
-                script {
-                    echo 'Unit tests with JUnit5'
-                    echo 'Integration tests with Selenium'
+    
+            stage('Unit and Integration Tests') {
+                steps {
+                    echo "Unit tests with JUnit5"
+                    echo "Integration tests with Selenium"
+                }
+                post{
+                    success{
+                        mail to: "omamashakhli2@gmail.com",
+                        subject: "Unit and Integration Tests Email",
+                        body: "Unit and Integration Tests were Successful!"
+                    }
                 }
             }
-            post {
-                success {
-                        emailext attachLog: true,
-                        subject: 'Unit and Integration Tests Successful',
-                        body: 'Unit and integration tests have been successful.',
-                        to: 'omamashakhli2@gmail.com',
-                }
-                failure {
-                        emailext attachLog: true
-                        subject: 'Unit and Integration Tests Failure',
-                        body: 'Unit and integration tests have failed.',
-                        to: 'omamashakhli2@gmail.com',
-                }
-            }
-        }
         stage('Code Analysis') {
             steps {
                 script {
