@@ -13,8 +13,8 @@ pipeline {
                     echo "Integration tests with Selenium"
                 }
                 post{
-                    always{
-                        emailext attachLog: true,
+                    success{
+                        attachLog: true,
                         to: 'omamashakhli2@gmail.com',
                         subject: "Unit and Integration Tests Email",
                         body: "Unit and Integration Tests were Successful!"
