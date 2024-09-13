@@ -6,7 +6,7 @@ pipeline {
             steps {
                 script{
                     echo "Building the code with Maven"
-                    ]
+                }
             }
         }
         
